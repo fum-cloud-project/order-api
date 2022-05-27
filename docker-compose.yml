@@ -1,0 +1,18 @@
+version: '3.7'
+services:
+  product-api:
+    build: .
+    image: 'order-api:latest'
+    container_name: 'order-api'
+    networks:
+      - cloud_dev_internal_net
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "10"
+    restart: unless-stopped
+networks:
+  cloud_dev_internal_net:
+    external:
+      name: cloud_dev_internal_net
