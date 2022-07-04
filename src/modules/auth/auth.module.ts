@@ -10,7 +10,7 @@ import { AUTH_PACKAGE } from './constants';
         name: AUTH_PACKAGE,
         transport: Transport.GRPC,
         options: {
-          url: 'localhost:50052',
+          url: process.env.AUTH_GRPC_URL,
           package: 'auth',
           protoPath: 'src/grpc/auth.proto',
         },

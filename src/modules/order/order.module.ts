@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+ import { Module } from '@nestjs/common';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { OrderController } from './order.controller';
 import { OrderService } from './services/order.service';
@@ -16,7 +16,7 @@ import { AUTH_PACKAGE } from '../auth/constants';
         name: PRODUCTS_PACKAGE,
         transport: Transport.GRPC,
         options: {
-          url: 'localhost:50052',
+          url: process.env.PRODUCT_GRPC_URL,
           package: 'product',
           protoPath: 'src/grpc/products.proto',
         },
@@ -27,7 +27,7 @@ import { AUTH_PACKAGE } from '../auth/constants';
         name: AUTH_PACKAGE,
         transport: Transport.GRPC,
         options: {
-          url: 'localhost:50051',
+          url: process.env.AUTH_GRPC_URL,
           package: 'auth',
           protoPath: 'src/grpc/auth.proto',
         },
